@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Fixing the space constraint:
+echo "Fixing the space constraint:"
   growpart /dev/nvme0n1 4
   lvextend -l +50%FREE /dev/mapper/RootVG-homeVol ;
   lvextend -l +100%FREE /dev/mapper/RootVG-varVol ;
@@ -24,3 +24,9 @@ curl -L -o /bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.i
 chmod +x /bin/kubectl
 
 minikube start --force
+
+if [ $? -ne 0 ]; then
+  echo "Minikube start failed run the below command to fix the issue"
+  echo -e "\t minikube delete \n \t minikube start --force"
+  exit 1
+fi
