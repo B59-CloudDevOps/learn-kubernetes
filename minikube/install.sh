@@ -23,6 +23,4 @@ sysctl fs.protected_regular=0
 curl -L -o /bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x /bin/kubectl
 
-echo "This Property is neded to run minikube"
-sysctl fs.protected_regular=0
 minikube start --force
