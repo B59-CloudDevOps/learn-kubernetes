@@ -14,6 +14,13 @@ sysctl fs.protected_regular=0
 curl -L -o /bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x /bin/kubectl
 
-
+echo "This Property is neded to run minikube"
+sysctl fs.protected_regular=0
 echo "Running the following command - minikube start --force"
 minikube start --force
+
+if [ $? -ne 0 ]; then
+  echo "Minikube start failed. Please check the logs for more details."
+  echo "Run 'minikube delte' and start using 'minikube start --force'"
+  exit 1
+fi
