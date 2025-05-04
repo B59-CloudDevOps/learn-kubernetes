@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "Configuring hostname:"
-set-hostname minikube
-
 echo "Fixing the space constraint:"
   growpart /dev/nvme0n1 4
   lvextend -l +50%FREE /dev/mapper/RootVG-homeVol ;
@@ -27,6 +24,9 @@ curl -L -o /bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.i
 chmod +x /bin/kubectl
 
 minikube start --force
+
+echo "Configuring hostname:"
+set-hostname minikube
 
 if [ $? -ne 0 ]; then
   echo "Minikube start failed run the below command to fix the issue"
