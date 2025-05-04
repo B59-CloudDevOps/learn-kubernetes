@@ -25,11 +25,4 @@ chmod +x /bin/kubectl
 
 echo "This Property is neded to run minikube"
 sysctl fs.protected_regular=0
-echo "Running the following command - minikube start --force"
 minikube start --force
-
-# if [ $? -ne 0 ]; then
-#   echo "Minikube start failed run the below command to fix the issue"
-#   echo -e "\t minikube delete \n \t minikube start --force"
-#   exit 1
-# fi
