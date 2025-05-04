@@ -2,6 +2,7 @@
 
 echo "Configuring hostname:"
 set-hostname minikube
+
 echo "Fixing the space constraint:"
   growpart /dev/nvme0n1 4
   lvextend -l +50%FREE /dev/mapper/RootVG-homeVol ;
