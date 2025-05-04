@@ -30,6 +30,6 @@ minikube start --force
 
 if [ $? -ne 0 ]; then
   echo "Minikube start failed. Please check the logs for more details."
-  echo "Run 'minikube delte' and start using 'minikube start --force'"
+  echo -e "Run $ minikube delte and start using $ minikube start --force"
   exit 1
 fi
