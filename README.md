@@ -104,3 +104,7 @@ Pod is the smalled computable component on kubernetes cluster and on this we con
 
         $ kubectl create -f fileName.yaml
         $ kubectl apply -f fileName.yaml 
+
+> How can I see the properties of the pod ?
+
+        $ kubectl describe pod podName
