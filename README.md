@@ -96,6 +96,11 @@ Pod is the smalled computable component on kubernetes cluster and on this we con
 > Kuberntes offers lot of variety of resources to compliment the pods functionality and these resources can be created by the follwing ways:
 
     1) Manual approach ( By suppling the values : This is not recommended as we cannot version control it )
+        $ kubectl run nginx-pod --image=nginx
+
     2) Declarative approach ( Define all the needed properties as per the documentation and version control it: This is the recommended pattern ) 
 
-    K8 resources can be created in declarative pattern by using YAML
+    K8 resources can be created in declarative pattern by using YAML 
+
+        $ kubectl create -f fileName.yaml
+        $ kubectl apply -f fileName.yaml 
