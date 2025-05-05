@@ -60,3 +60,42 @@ Kubernetes runs across clusters of machines, making applications highly availabl
     4) Start minikubne
         $ minikube start
 
+> How to test the connectivity to the cluster or get the cluster info
+
+    $ kubectl cluster-info
+        Kubernetes control plane is running at https://192.168.49.2:8443
+        CoreDNS is running at https://192.168.49.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+        To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+        
+> How can we connect to kubernetes cluster
+    1) kubectl  ( cli way of accessing the cluster : This is the most preferred & highly used )
+    2) non-cli  ( K9s ) 
+    3) K9s UI   ( Octane )
+
+> Going forward, we don't say we will run the containers on kubernetes. Instead, we say we run the pods. 
+
+> What is a POD in kubernetes ?
+Pod is the smalled computable component on kubernetes cluster and on this we container will run and this is referred as a "Wrapper To The Containers"
+
+> A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers. A Pod's contents are always co-located and co-scheduled, and run in a shared context.
+
+> One of the biggerst operational challenge of Shared Storage & Network was solved by Kubernetes via Pods and it's a big achievement
+
+> Kubernetes offers lots of varieties of respources and it's all about API's,
+    You want x-resourc,e you need use some api 
+    You want x-resourc,e you need use some api [ No need to byheart any of these, it's all available in the documentaiton ]
+
+> kubernetes command syntax:
+
+    $ kubectl verb  resource  [ syntax ]
+    $ kubectl get pods
+    $ kubectl cluster-info 
+    $ kubectl api-versions  
+
+> Kuberntes offers lot of variety of resources to compliment the pods functionality and these resources can be created by the follwing ways:
+
+    1) Manual approach ( By suppling the values : This is not recommended as we cannot version control it )
+    2) Declarative approach ( Define all the needed properties as per the documentation and version control it: This is the recommended pattern ) 
+
+    K8 resources can be created in declarative pattern by using YAML
