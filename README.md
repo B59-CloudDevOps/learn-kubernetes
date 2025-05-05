@@ -112,3 +112,35 @@ Pod is the smalled computable component on kubernetes cluster and on this we con
 > How can I delete all the resources mentioned in a manifest file ?
 
         $ kubectl delete -f fileName.yaml 
+
+> Important use case on kubernetes cluster!!!
+
+    On kubernetes, resources can be utilized very efficiently. 
+
+    1) If you have a kuberntes cluster, this can be logically provisioned in to multiple spaces and can be delegated to multiple teams 
+    2) You can host, qa, dev , sit environments in a single cluster without interference to each other
+
+    This can be achieved by using a concept called as namespace. By default, on kuberntes cluster resources in one namespace can communicate with other pods in other namespaces. However we can control the behavior if we wish to restrict using a concept called as Network Policy.  
+     
+> On kubernetes cluster, we have these namespaces to host different resources 
+    # kubectl get ns
+
+        kube-system  [ control plane components are hosted on this namespace ]
+        kube-public 
+        default      [ If you don't the namespace, k8 resources will be hosted on the default namespace ]
+    
+    # kube-system namespace:
+        This is where the control plane (master) components and core cluster services typically run:
+
+        kube-apiserver – Exposes the Kubernetes API.
+        kube-controller-manager – Runs controllers to manage cluster state.
+        kube-scheduler – Assigns pods to nodes.
+        etcd – Key-value store for cluster data (sometimes run separately).
+        CoreDNS – Cluster DNS service.
+        cloud-controller-manager – Interacts with cloud provider APIs (if used).
+
+    # kube-public namespace:
+
+        Mostly empty by default.
+        Publicly readable across all users; used to expose cluster info (like the cluster-info ConfigMap).
+        Not for hosting control plane components.
