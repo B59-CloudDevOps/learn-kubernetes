@@ -6,7 +6,10 @@ spec:
   containers:
   - name: nginx
     image: nginx:perl
+    ports:
+    - containerPort: 80
+      protocol: TCP
 
-  - name: busybox
-    image: busybox:latest
-    command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3700']
+  - name: debian
+    image: debian:latest
+    command: ["sleep", "3900"]
