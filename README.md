@@ -40,7 +40,7 @@ Kubernetes runs across clusters of machines, making applications highly availabl
 ```
     2 CPUs or more
     2GB of free memory
-    20GB of free disk space
+    30GB of free disk space
 ```
 
 > How to install minikube ? Ensure you provision the lab instance with 30gb and t3.medium 
