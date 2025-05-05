@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: expense
+data:
+  APP: "expense"
+  VERSION: "15"
+  TEAM: "Simbaa"
+  ORGUNUT: "xyz"
+  DB_HOST: "db-host"
+  DB_PORT: "5432"
+  DB_USER: "db-user"
+
+--- 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-cm 
+spec:
+  containers:
+  - name: nginx
+    image: nginx:perl 
+    envFrom:
+    - configMapRef:
+        name: nginx-config

@@ -144,3 +144,16 @@ Pod is the smalled computable component on kubernetes cluster and on this we con
         Mostly empty by default.
         Publicly readable across all users; used to expose cluster info (like the cluster-info ConfigMap).
         Not for hosting control plane components.
+
+> How to run a specific command on a pod non-interactively
+
+    $ kubectl exec podName  -- commandToExecute 
+    $ kubectl exec nginx-env  -- env
+
+
+> How to enter in to the pod interactively ?
+
+    $ kubectl exec -it podName -- bash 
+
+> Whenever you have a common set of properties that needs to be supplied across the componets of the kubernetes, then rather supplying manually, we tend to create a resource called as ConfigMap and we inject this configMap in to the pods. 
+
