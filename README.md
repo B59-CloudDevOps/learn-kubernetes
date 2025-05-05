@@ -108,3 +108,7 @@ Pod is the smalled computable component on kubernetes cluster and on this we con
 > How can I see the properties of the pod ?
 
         $ kubectl describe pod podName
+
+> How can I delete all the resources mentioned in a manifest file ?
+
+        $ kubectl delete -f fileName.yaml 
