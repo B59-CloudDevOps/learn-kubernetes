@@ -7,8 +7,8 @@ Agenda:
     6) Deployment Sets
     7) Daemon Sets
     8) Stateful sets
-    10) Env, Configmap
-    11) Secrets
+    10) Labels & Selectors
+    11) Secrets, Env, Configmap
     12) Jobs
     13) Cronjobs
     14) Cluster IP, Load Balancer, NodePort, External Name
