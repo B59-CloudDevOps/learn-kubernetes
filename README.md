@@ -158,6 +158,8 @@ Pod is the smalled computable component on kubernetes cluster and on this we con
 > Whenever you have a common set of properties that needs to be supplied across the componets of the kubernetes, then rather supplying manually, we tend to create a resource called as ConfigMap and we inject this configMap in to the pods. 
 
 
+> Keep in mind, pods are immutable. If you want to do some, you cannot do it on the same pod, even if you don't you'll lose the changes.
+
 
 ### In reality, we don't directly create pods. They would be done by using SETS. You provision sets will provision the pods
 
@@ -172,6 +174,8 @@ Keep in mind, we never create pods directly. We will deploy SETS and sets will c
 > Based on the use case, there are 4 varieties of sets offered in kubernetes as of today:
 
     1) Replica Set       : A ReplicaSet is a controller that ensures a specified number of replicas (identical copies) of a pod are running in a cluster at all times. ReplicaSets help to ensure high availability and scalability by automatically scaling the number of pod replicas up or down in response to changes in demand or hardware failures.
-    2) Deployment Set    :
+    2) Deployment Set    : 
     3) Daemon Set 
     4) Stateful Set 
+
+
