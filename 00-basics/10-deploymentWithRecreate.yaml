@@ -5,6 +5,8 @@ metadata:
   labels:
     app: nginx
 spec:
+  strategy:
+    type: Recreate
   replicas: 5
   selector:
     matchLabels:
@@ -19,7 +21,6 @@ spec:
         image: nginx:perl
         ports:
         - containerPort: 80
-    strategy:
-      type: Recreate
+
 
 
