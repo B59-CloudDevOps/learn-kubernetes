@@ -23,4 +23,4 @@ Agenda:
     23) Taints & Tolerations
     24) Node Affinity & Anti-affinity
     25) Topology constraints
-    26) Pod priority & preemption
+    26) Pod priority & preemption 
