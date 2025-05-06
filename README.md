@@ -179,3 +179,11 @@ Keep in mind, we never create pods directly. We will deploy SETS and sets will c
     4) Stateful Set 
 
 What is a rolling udpate vs Recreate based deployment ? 
+
+
+Deployment Types:
+    1) Rolling update: Moves from one version to another version sequentially, we would encounter near zero downtime. But during updates, users will experience both the versions. 
+
+    2) Recreate Update: Deletes all the pods of the set at a time and recreates the pods with newer version. Involved some downtime. 
+
+    3) Blue Green Deployment
