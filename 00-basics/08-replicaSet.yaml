@@ -17,4 +17,14 @@ spec:
     spec:
       containers:
       - name: php-redis
-        image: docker.io/nginx:perl
+        image: docker.io/nginx:otel
+
+# Replicaset
+# - A ReplicaSet is a higher-level abstraction that manages a set of identical pods.
+# - It ensures that a specified number of pod replicas are running at any given time.
+# - If a pod fails or is deleted, the ReplicaSet automatically creates a new pod to replace it.
+# - ReplicaSets are often used in conjunction with Deployments, which provide declarative updates to ReplicaSets and Pods.
+# - ReplicaSets are defined using a YAML manifest, similar to Pods.
+# - The manifest includes the desired number of replicas, a selector to identify the pods it manages, and a pod template that defines the pod's configuration.
+# - ReplicaSets can be scaled up or down by changing the number of replicas in the manifest.
+# - Replica sets don't allow you to use the same pod template for different replicas.
