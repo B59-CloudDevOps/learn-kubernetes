@@ -174,8 +174,8 @@ Keep in mind, we never create pods directly. We will deploy SETS and sets will c
 > Based on the use case, there are 4 varieties of sets offered in kubernetes as of today:
 
     1) Replica Set       : A ReplicaSet is a controller that ensures a specified number of replicas (identical copies) of a pod are running in a cluster at all times. ReplicaSets help to ensure high availability and scalability by automatically scaling the number of pod replicas up or down in response to changes in demand or hardware failures.
-    2) Deployment Set    : 
+    2) Deployment Set    :
     3) Daemon Set 
     4) Stateful Set 
 
-
+What is a rolling udpate vs Recreate based deployment ? 
