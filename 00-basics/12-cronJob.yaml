@@ -1,12 +1,12 @@
 # This is like a schedule job and can be trigged as a batch; 
 # Whenever it meets the schedule it deploys a job that runs a pod with the mentioned configuration
-# As per the schedule, cronJob create a job ----> Job runs the pod ---> Goes to completed state.
+# As per the schedule, cronJob create a job ----> Job create the pod ---> Pod Goes to completed state.
 apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: hello-cron
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "*/55 * * * *"
   jobTemplate:
     spec:
       template:
