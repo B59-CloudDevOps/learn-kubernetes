@@ -1,0 +1,14 @@
+apiVersion: v1 
+kind: Service
+metadata:
+  name: nginx-ext-svc
+  namespace: roboshop 
+spec:
+  type: ExternalName
+  externalName: nginx-deployment-xyxyxyxyxyxyx-svc.roboshop.svc.cluster.local
+
+# Whenever you create a service of type ExternalName, it will create a CNAME record in the DNS server.
+# The CNAME record will point to the externalName you have provided in the service.
+# The DNS server will resolve the CNAME record to the IP address of the externalName.
+# The DNS server will return the IP address of the externalName to the client.
+# This is just to make sure you create a short name for the service.

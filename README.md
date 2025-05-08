@@ -205,3 +205,82 @@ Deployment Types:
 
     North - South Communication ( Communication from internet to service on kubernetes )
     East - Sest communications ( Communication between services on kubernetes)
+
+>>> NodePort & LoadBalancers don't work on minikube <<<
+
+How one service in one namespace-x can talk to other service in another namespace-y ?
+
+> How a Fully Qualified Domain Name of a service on Kubernetes looks like ?
+
+    serviceName.nameSpace.svc.cluster.local 
+
+    There is a service named svc-x in ns-x & another service named svc-y in ns-y ?
+
+    If x wants to communicate with y, then x has to refer y the following way 
+
+       From x-ns,  svc-y.ns-y.svc.cluster.local 
+
+```
+# kc exec -it nginx -n expense -- bash
+    root@nginx:/# curl nginx-deployment-svc
+    curl: (6) Could not resolve host: nginx-deployment-svc
+    root@nginx:/# curl nginx-deployment-svc.roboshop.svc.cluster.local
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Welcome to nginx!</title>
+    <style>
+    html { color-scheme: light dark; }
+    body { width: 35em; margin: 0 auto;
+    font-family: Tahoma, Verdana, Arial, sans-serif; }
+    </style>
+    </head>
+    <body>
+    <h1>Welcome to nginx!</h1>
+    <p>If you see this page, the nginx web server is successfully installed and
+    working. Further configuration is required.</p>
+
+    <p>For online documentation and support please refer to
+    <a href="http://nginx.org/">nginx.org</a>.<br/>
+    Commercial support is available at
+    <a href="http://nginx.com/">nginx.com</a>.</p>
+
+    <p><em>Thank you for using nginx.</em></p>
+    </body>
+</html>
+```
+
+> Who defines the maximum CPU and Memory that can be used by the provision pod on a kubernetes cluster ?
+    By default, if we don't mentioned those details, pod can use as much as it can as per the Nodes availability & this can also lead to the pod going to Out Of Resources. It's always a best practice to offer Limits & Requests for CPU and Memory when scheduling the k8 resources. 
+
+    Keep in mind, the max cpu, memory that can be declared should always be less than 85% of the node's cpu / memory. 
+
+
+> How to can define what's the max and min resources that can be used by the pods ?
+    Using Limits & Requests
+
+        Requests: Lower cap, min resources that has be allocated for the pod to be scheduled.
+        Limits: Upper cap, max resources that the pod can use on the top of the node. 
+    
+    Limits & Requests are at the container level of the pod. If the pod has 2 containers, we can define 2 sets of limits & requests in such case
+
+1. Resource Requests
+    What it is: The minimum amount of CPU or memory that a container is guaranteed.
+    Why it matters: Kubernetes uses this to schedule pods. If a node doesn’t have enough available resources to satisfy the request, the pod won’t be scheduled there.
+    Analogy: Think of this as a reservation.
+
+2. Resource Limits
+    What it is: The maximum amount of CPU or memory that a container is allowed to use.
+    Why it matters: If the container tries to use more than the limit:
+    For CPU: it will be throttled.
+    For memory: it can be terminated (OOMKilled).
+
+> What will happen if you try to schedule a pod on a node that has not enough resources ? 
+    > Pod will not be scheduled, it remains in Pending State
+
+What are the pod states that we have see so far ?
+    1) Running State 
+    2) ImagePull Back Error 
+    3) CrashloopbackOff
+    4) OutOfMemory
+    5) Pending
