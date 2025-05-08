@@ -187,3 +187,21 @@ Deployment Types:
     2) Recreate Update: Deletes all the pods of the set at a time and recreates the pods with newer version. Involved some downtime. 
 
     3) Blue Green Deployment
+
+> Why you create a service ?
+    1) To expose it 
+       
+       Frontend ( Public )    :  In this case we will go with K8 SVC of type LB ( which is going to provision loadbalancer )
+       Backend  ( Internal )  : In this case, we will go with K8 SCV of type Cluster IP ( This is 100% internal to the cluster, which can only be accessed by the services inside the cluster )
+       Mysql    ( Internal )
+    
+> Service In Kubernetes:
+    1) Why you need a service ? To expose
+    2) Based on from where we need to expose our service, we will use one among them:
+        a) Cluster IP ( default )
+        b) Load Balancer
+        c) Node Port
+        d) External Name
+
+    North - South Communication ( Communication from internet to service on kubernetes )
+    East - Sest communications ( Communication between services on kubernetes)
