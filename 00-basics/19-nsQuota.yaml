@@ -22,6 +22,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mem-cpu-demo
+  namespace: expense
   labels:
     app: nginx
 spec:
