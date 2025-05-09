@@ -284,3 +284,14 @@ What are the pod states that we have see so far ?
     3) CrashloopbackOff
     4) OutOfMemory
     5) Pending
+
+> How do we know the resource details on the nodes of a kubernetes cluster ?
+    We can install metrics server that's going to extract the node metrics and can show you
+        $ kubectl top nodes
+    
+    Ref: https://github.com/kubernetes-sigs/metrics-server 
+
+    kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+    [ If your run this on minikube, you'd would need to do some tls tuning ]
+    

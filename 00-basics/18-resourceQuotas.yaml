@@ -1,0 +1,33 @@
+# Resource Quotas in Kubernetes
+# Resource quotas in Kubernetes are used to manage and limit the resource consumption of namespaces. They ensure that no single namespace can consume more than its fair share of cluster resources, such as CPU, memory, or storage. This is particularly useful in multi-tenant environments where multiple teams or applications share the same cluster.
+
+# A resource quota is defined at the namespace level and can limit the total amount of resources (e.g., CPU, memory, storage) or the number of specific Kubernetes objects (e.g., Pods, Services, PersistentVolumeClaims) that can be created within the namespace.
+
+# Example YAML File for Creating a Resource Quota
+# Below is an example YAML file for creating a resource quota in Kubernetes:
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: example-resource-quota
+  namespace: example-namespace
+spec:
+  hard:
+    pods: "10"                      # Maximum number of Pods
+    requests.cpu: "4"               # Total CPU requests across all Pods
+    requests.memory: "8Gi"          # Total memory requests across all Pods
+    limits.cpu: "8"                 # Total CPU limits across all Pods
+    limits.memory: "16Gi"           # Total memory limits across all Pods
+    persistentvolumeclaims: "5"     # Maximum number of PersistentVolumeClaims
+    storage: "100Gi"                # Total storage across all PersistentVolumeClaims
+
+# Resource quotas work like this:
+
+# Different teams work in different namespaces. This can be enforced with RBAC.
+# The administrator creates one ResourceQuota for each namespace.
+# Users create resources (pods, services, etc.) in the namespace, and the quota system tracks usage to ensure it does not exceed hard resource limits defined in a ResourceQuota.
+
+# If creating or updating a resource violates a quota constraint, the request will fail with HTTP status code 403 FORBIDDEN with a message explaining the constraint that would have been violated.
+
+# If quotas are enabled in a namespace for compute resources like cpu and memory, users must specify requests or limits for those values; otherwise, the quota system may reject pod creation. Hint: Use the LimitRanger admission controller to force defaults for pods that make no compute resource requirements.
+
