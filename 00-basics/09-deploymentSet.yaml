@@ -24,4 +24,4 @@ spec:
 # - It provides declarative updates to the pods and ReplicaSets.
 # - It allows you to define the desired state of the application, and Kubernetes will automatically manage the deployment to achieve that state.
 # This allows updates to be rolled out gradually, with the ability to roll back to a previous version if needed.
-# You can udpate the pods by using RollingUpdate or by Recreate strategy
+# You can udpate the pods by using RollingUpdate or by Recreate strategy.

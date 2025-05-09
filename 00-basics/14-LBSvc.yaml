@@ -32,4 +32,3 @@ spec:
     - protocol: TCP
       port: 80                  # Port exposed by the service
       targetPort: 80            # Port exposed by the container: This is the port on which the container is listening
-
