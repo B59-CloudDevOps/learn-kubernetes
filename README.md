@@ -343,9 +343,13 @@ So, let's proceed with provisioning an AWS Managed Kubernetes Cluster : EKS ( El
 
 > Why EKS Cluster's Nodepools also needs an IAM Role ?
     Node pools reports metrics to Cloud watch, Accessing EKS API, To pull the images from container registry, For autoscaling of nodes as well. 
-    
+
 > How can we connect to the kuberntes cluster ?
     You need to generate the kube-config file.
+        $ aws eks udpate-kubeconfig --name clusterName
 
 > What is the kube-config file ?
     This file has the authentication information needed to connect to the cluster along with the cluster details.
+
+> Location of the kube-config file ?
+    /home/yourProfile/.kube/config
