@@ -326,7 +326,7 @@ So, let's proceed with provisioning an AWS Managed Kubernetes Cluster : EKS ( El
                 In this case, if you lose one of the existing master node:
                     * We can still connect to the cluster.
                     * Existing workloads on the cluster will run as is.
-                    * New workloads can also be scheduled as is as we have other working master node
+                    * New workloads can also be scheduled as is as we have other working master node.
                     * If you lose one pod of a SET, new pods will be scheduled as is.
 
 > Let's proceed with provisioning EKS Cluster:
@@ -336,10 +336,16 @@ So, let's proceed with provisioning an AWS Managed Kubernetes Cluster : EKS ( El
 
 > Tomorrow, we will use terraform and provision EKS by using the EKS Module from Terraform registry 
 
-
 > What is AWS EKS Mode ?
-
 
 > Why EKS Cluster when provisioning needs an IAM Role? 
     EKS Cluster has to interact with other services like Load Balancers, EC2 , CloudWatch 
 
+> Why EKS Cluster's Nodepools also needs an IAM Role ?
+    Node pools reports metrics to Cloud watch, Accessing EKS API, To pull the images from container registry, For autoscaling of nodes as well. 
+    
+> How can we connect to the kuberntes cluster ?
+    You need to generate the kube-config file.
+
+> What is the kube-config file ?
+    This file has the authentication information needed to connect to the cluster along with the cluster details.
