@@ -1,8 +1,8 @@
 resource "aws_eks_node_group" "nodegroup_01" {
   cluster_name    = aws_eks_cluster.main.name
   node_group_name = var.nodegroup_01_name
-  node_role_arn   = aws_iam_role.example.arn
-  subnet_ids      = aws_subnet.example[*].id
+  node_role_arn   = aws_iam_role.nodegroup_01_iamrole.arn
+  subnet_ids      = ["subnet-0d1a07bc7ceaf4694", "subnet-05a9dc77897b66c38", "subnet-08c53c78664626d0f"] # worker subnets
 
   scaling_config {
     desired_size = 2 # When node group is created, it will have 2 nodes.
