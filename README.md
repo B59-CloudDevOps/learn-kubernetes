@@ -294,4 +294,52 @@ What are the pod states that we have see so far ?
     kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 
     [ If your run this on minikube, you'd would need to do some tls tuning ]
-    
+
+> On minikube, LB, NodePort were not working and we can also see that few of the aspects are not working.
+So, let's proceed with provisioning an AWS Managed Kubernetes Cluster : EKS ( Elastic Kubernetes Service ) 
+
+    When we use Kubernetes on a managed service like EKS:   
+        1) Node autoscaling & deprovisioning can be automated and are handled by AWS 
+        2) Here, you don't have control on the Master Node or Control Plan, we don't even be seeing it.  
+        3) On EKS, we call the group of nodes as NodeGroup
+
+> What is the scope of EKS Cluster ?
+    1) Zonal:  Both master and work nodes are on the same zone of the regions  ( One master and nodegroup , both of the same zone )
+    2) Multi-zonal: Nodes of the nodegroup would be speading across the selected zones of the region. ( One master in zone-x and nodegroups in x,y zones )
+    3) Regional: Nodes of the node group & master would be on more than one zone. 
+
+> What will happen if you lost the node that has pods of the sets running in a nodeGroup of the k8 cluster ?
+    * Pods will be recreated on other node of the node group 
+
+> What will happen if you lose the master node ? 
+    If someone asks you this question, your answer should be:
+        1) Is that a Multi-zonal cluster or a regional cluster? 
+        
+        2) If the answer is multi-zonal cluster, that means one master & multiple nodeGroups: 
+                In this case, if you lose the one existing master node:
+                    * You can no longer connect to the cluster.
+                    * Existing workloads on the cluster will run as is 
+                    * New workloads cannot be scheduled as we cannot connect.
+                    * If you lose one pod of a SET, new pods won't be scheduled. 
+
+        3) If the answer is regional cluster, that means more than one master & multiple nodeGroups: 
+                In this case, if you lose one of the existing master node:
+                    * We can still connect to the cluster.
+                    * Existing workloads on the cluster will run as is.
+                    * New workloads can also be scheduled as is as we have other working master node
+                    * If you lose one pod of a SET, new pods will be scheduled as is.
+
+> Let's proceed with provisioning EKS Cluster:
+    EKS: Elastic Kubernetes Service
+
+    Note: When you use a managed service, you don't have go do the os patch manitenance of the underlying hosts, you only need to patch the nodePools and this goes by a single click of a button.
+
+> Tomorrow, we will use terraform and provision EKS by using the EKS Module from Terraform registry 
+
+
+> What is AWS EKS Mode ?
+
+
+> Why EKS Cluster when provisioning needs an IAM Role? 
+    EKS Cluster has to interact with other services like Load Balancers, EC2 , CloudWatch 
+
