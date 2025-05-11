@@ -55,3 +55,8 @@ resource "aws_iam_role_policy_attachment" "b59_eks_AmazonEC2ContainerRegistryRea
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.nodegroup_01_iamrole.name
 }
+
+# resource "aws_iam_role_policy_attachment" "b59_eks_AmazonEKSClusterPolicy" {
+#   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+#   role       = aws_iam_role.nodegroup_01_iamrole.name
+# }
