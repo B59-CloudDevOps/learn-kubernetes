@@ -386,4 +386,12 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6IjdmOTkwYjZhMzQyMThmOGNlNDZkMDIzYTI2OTdkODYzNDdhM2Fl
     1) Roles ( Scope is just with in the mentioned namespace )  
         Ex: control access to pod, restrict reading secrets in x nameSpace , deny creating configMap in x nameSpace 
     2) ClusterRole ( Scope is across the cluster. This is to control creating namespace, allow roles )
-    
+
+
+> Network policies 
+    These are like security groups on kuberntes cluster. Using this can deny communication or enable communication among the namespaces.
+    To use these, we need to enable an add on called AWS VPC CNI 
+
+> What is the CNI used on AWS EKS ?
+    AWS VPC CNI : This enables pod networking within your cluster.
+
