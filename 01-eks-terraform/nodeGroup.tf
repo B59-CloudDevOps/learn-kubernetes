@@ -12,6 +12,10 @@ resource "aws_eks_node_group" "nodegroup_01" {
     min_size     = 1 # Minimum number of nodes in the node group that it can scale down to.
   }
 
+  lifecycle {
+    ignore_changes = [scaling_config]
+  }
+
   update_config {
     max_unavailable = 1 # Maximum number of nodes that can be unavailable during an update.
   }
