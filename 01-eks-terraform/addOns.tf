@@ -4,7 +4,6 @@ resource "aws_eks_addon" "main" {
   cluster_name = aws_eks_cluster.main.name
   addon_name   = "vpc-cni"
   configuration_values = jsonencode({
-    replicaCount = 3
     configuration_values = {
       "enableNetworkPolicy" = "true"
     }

@@ -393,4 +393,5 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6IjdmOTkwYjZhMzQyMThmOGNlNDZkMDIzYTI2OTdkODYzNDdhM2Fl
     To use these, we need to enable an add on called AWS VPC CNI 
 
 > What is the CNI used on AWS EKS ?
-    AWS VPC CNI : This enables pod networking within your cluster.
+    AWS VPC CNI : This enables pod networking within your cluster. 
+    Whenever you enable an addon on EKS, technically aws on the backend is deploying those resources for you in the kube-system namespace
