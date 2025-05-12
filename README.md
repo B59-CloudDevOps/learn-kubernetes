@@ -353,3 +353,16 @@ So, let's proceed with provisioning an AWS Managed Kubernetes Cluster : EKS ( El
 
 > Location of the kube-config file ?
     /home/yourProfile/.kube/config
+
+> let's focus on RBAC, Network Security, Container & Pod Security 
+
+Here are the top 3 principles that any resource to be followed in the infrastructure:
+
+ 1) Authentication
+ 2) Authorization     ( Least Privilege Principle ) : Role Based Access Control
+ 3) Auditing 
+
+> Role Based Access Control ( RBAC )
+    1) On k8 cluster, we will creat a role with Pod, CM, Secret list Only access.
+    2) Using Role Binding, we will bind this role to a user.
+    3) Then that user will only that listing the pods, cm or secrets in the cluster.
