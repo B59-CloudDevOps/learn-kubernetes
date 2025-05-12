@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-if [ $1 -eq apply ]; then
+if [ "$1" -eq "apply" ]; then
 
     echo "EKS Cluster Provisioning In Progress"
     terraform init
@@ -16,7 +16,7 @@ if [ $1 -eq apply ]; then
     aws eks update-kubeconfig --region us-east-1 --name b59-eks-cluster
     kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml 
 fi 
-elif [ $1 -eq destroy ]; then
+elif [ "$1" -eq "destroy" ]; then
     echo "EKS Cluster Destroying In Progress"
     terraform init
     terraform plan
