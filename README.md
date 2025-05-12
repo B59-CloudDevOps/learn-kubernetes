@@ -381,3 +381,9 @@ Here are the top 3 principles that any resource to be followed in the infrastruc
     5) Using this sa, let's connect to cluster and see the limitations.
 
 eyJhbGciOiJSUzI1NiIsImtpZCI6IjdmOTkwYjZhMzQyMThmOGNlNDZkMDIzYTI2OTdkODYzNDdhM2FlMDMifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjIl0sImV4cCI6MTc0NzAxNzA2MCwiaWF0IjoxNzQ3MDEzNDYwLCJpc3MiOiJodHRwczovL29pZGMuZWtzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2lkL0U5OTQxMDk4OTU0MDJEMTIwNzU3QTk5N0ExQjFEQTg1IiwianRpIjoiMDYwMzNhMDItZTA2Yy00MGNhLTliOTQtMTQzYjFmNWRlMWNiIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0Iiwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImV4cGVuc2Utc2EiLCJ1aWQiOiI4YmNmMmJkMC03ZTQwLTRhNTQtODQ3YS05MThkNWFlZjRjMzQifX0sIm5iZiI6MTc0NzAxMzQ2MCwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OmRlZmF1bHQ6ZXhwZW5zZS1zYSJ9.pR8C3jyedyaUnrEqSsG59Sz94tWnZ6imIlCW5HnTDn3bNSAr6_N2WlBjg0RN8x1VR9HGYNJf_3Bu765H9VDj5Cf4Z6KdIc24kHFgRykIef81-ZSkNSsOfHiu9fWQLxztnIybwqXsIzg4qrFnt0oQPbt4yiAYDKQ0S60l3Q7L519XzWkFVD5AqIfVOjMBr65gd6bOpJ71kfVzopV2iPE_FKejx5od-aXDdxHyq4ISgpvq8-xPn8tjoXk8tES_FF_iN2SahyQ6yyDj6I1yyqTKYQUQRi9h9znUOvb8IRrKN-5AMUvzruddLWLnSjv0-zEpzXFy1BeM9ddwqWiH3npsZg
+
+> Roles in kubernetes are of 2 types:
+    1) Roles ( Scope is just with in the mentioned namespace )  
+        Ex: control access to pod, restrict reading secrets in x nameSpace , deny creating configMap in x nameSpace 
+    2) ClusterRole ( Scope is across the cluster. This is to control creating namespace, allow roles )
+    
