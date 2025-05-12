@@ -394,4 +394,3 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6IjdmOTkwYjZhMzQyMThmOGNlNDZkMDIzYTI2OTdkODYzNDdhM2Fl
 
 > What is the CNI used on AWS EKS ?
     AWS VPC CNI : This enables pod networking within your cluster.
-
