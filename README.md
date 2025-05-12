@@ -366,3 +366,8 @@ Here are the top 3 principles that any resource to be followed in the infrastruc
     1) On k8 cluster, we will creat a role with Pod, CM, Secret list Only access.
     2) Using Role Binding, we will bind this role to a user.
     3) Then that user will only that listing the pods, cm or secrets in the cluster.
+
+> Kubernetes is all about service accounts,
+    We will configure the workloads with these service accounts and we will assign the roles to the service accounts using Role Binding. So that those resources will get the needed permissions.
+
+    We can create a SA, grant the roles and provison a token which can be assigned to human and human can connect to cluster using that role.
