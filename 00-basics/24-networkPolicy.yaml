@@ -15,9 +15,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mznginx-deployment
+  namespace: mzapp
   labels:
     app: mznginx
-    namespace: mzapp
 spec:
   strategy:
     type: RollingUpdate
@@ -44,9 +44,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dmznginx-deployment
+  namespace: dmzapp
   labels:
     app: dmznginx
-    namespace: dmzapp
+    
 spec:
   strategy:
     type: RollingUpdate
