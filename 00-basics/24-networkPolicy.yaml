@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mzapp
+
+--- 
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dmzapp
+
+--- 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mznginx-deployment
+  labels:
+    app: mznginx
+    namespace: mzapp
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  replicas: 5
+  selector:
+    matchLabels:
+      app: mznginx
+  template:
+    metadata:
+      labels:
+        app: mznginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:perl
+        ports:
+        - containerPort: 80
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dmznginx-deployment
+  labels:
+    app: dmznginx
+    namespace: dmzapp
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  replicas: 5
+  selector:
+    matchLabels:
+      app: dmznginx
+  template:
+    metadata:
+      labels:
+        app: dmznginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:perl
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mznginx-deployment-svc
+  namespace: mzapp
+spec:
+  selector:
+    app: mznginx
+  ports:
+    - protocol: TCP
+      port: 80                  # Port exposed by the service
+      targetPort: 80  
+
+--- 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: dmznginx-deployment-svc
+  namespace: dmzapp
+spec:
+  selector:
+    app: dmznginx
+  ports:
+    - protocol: TCP
+      port: 80                  # Port exposed by the service
+      targetPort: 80  
+
+    
