@@ -397,3 +397,19 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6IjdiNGFkZTZiY2Q5Nzc2MWRmMWUyNjA3MGQxNWEwMWJlZjI5MDEx
     Whenever you enable an addon on EKS, technically aws on the backend is deploying those resources for you in the kube-system namespace
 
 > Network Policies ( Start with ) : Yesetrday we didn't record the session, so will reCap this.
+
+> HPA vs VPA 
+    Horizontal Pod Autoscaling, Vertical Pod Autoscaling 
+
+    VPA: The same pod with the turned down and based on the recommendation controller will allocate more resources, but this involves downtime 
+        VPA can be deployed in 2 modes: 
+            Manual Mode  ( vpc just gives you recommendations on what are limits and requests of the cpu and & memory)
+            Auto Mode    ( Automatically updates the values )
+        Most of the times, we do the tuning of cpu, memory by VPA in manual mode.
+
+Can HPA & VPA work together:
+    Yes, but:
+    HPA scales replicas.
+    VPA adjusts resource requests.
+    Be careful: HPA scales based on resource utilization %, which VPA can affect by changing resource requests.
+    Best practice: Use VPA for recommendations only, or tune both with care.

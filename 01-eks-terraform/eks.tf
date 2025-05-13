@@ -13,6 +13,7 @@ resource "aws_eks_cluster" "main" {
     subnet_ids = ["subnet-0d1a07bc7ceaf4694", "subnet-05a9dc77897b66c38", "subnet-08c53c78664626d0f"] #  The 3 subnets are for the EKS control plane's network access, not for controlling the number of master nodes.
   }
 
+  # Here is how we enable the logging for the EKS cluster:
   enabled_cluster_log_types = [
     "api",
     "audit",
