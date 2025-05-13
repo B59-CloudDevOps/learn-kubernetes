@@ -112,4 +112,4 @@ spec:
   podSelector: {}  # Selects all pods in the namespace
   policyTypes:
     - Ingress
-    - Egress
+    - Egress 

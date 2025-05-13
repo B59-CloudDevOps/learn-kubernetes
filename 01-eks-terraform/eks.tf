@@ -13,6 +13,11 @@ resource "aws_eks_cluster" "main" {
     subnet_ids = ["subnet-0d1a07bc7ceaf4694", "subnet-05a9dc77897b66c38", "subnet-08c53c78664626d0f"] #  The 3 subnets are for the EKS control plane's network access, not for controlling the number of master nodes.
   }
 
+  enabled_cluster_log_types = [
+    "api",
+    "audit",
+    "controllerManager",
+  ]
   # Ensure that IAM Role permissions are created before and deleted
   # after EKS Cluster handling. Otherwise, EKS will not be able to
   # properly delete EKS managed EC2 infrastructure such as Security Groups.
