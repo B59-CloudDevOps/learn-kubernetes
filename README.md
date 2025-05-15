@@ -436,3 +436,18 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6IjdiNGFkZTZiY2Q5Nzc2MWRmMWUyNjA3MGQxNWEwMWJlZjI5MDEx
 
 > How can we target our workloads to be tolerant to those taints ?
     You need to add tolerations to our workloads based on the tainted node 
+
+> Pod Priority & Pre-emption 
+
+    tier-1: premium and important workloads  ( These should be running at any cost )
+    tier-2: these should run and executes financial reports ( these should be running , but when compared tier1, tier2 is not prior)
+    tier-3: lease priority 
+
+When workloads of tier-1, tier-2, tier-3 workloads are running,  obvisously you have autoscaling enabled on the nodePool, whenever resource contention happens, your nodepool will autoScale the node ( But everything will have a threshold ) 
+
+In run time, when different workloads run, whenever there is a resource congention,  whom has to be given priority.
+
+Pre-emption: 
+    * When the cluster lacks resources to schedule a high priority Pod, Kubernetes may preempt (evict) lower priority Pods.
+    * Preemption evicts lower priority Pods to free up resources.
+    * Preemption is automatic, but only happens if needed.

@@ -1,0 +1,70 @@
+# We can have n number of priority classes in a cluster.
+# The priority class is used to assign a priority to the pods. The pods with higher priority will be scheduled first.
+# High priority pods will be scheduled first and low priority pods will be scheduled later.
+# The pods with lower priority will be evicted first if the node is under pressure. 
+
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: high-priority-tier-1
+value: 1000
+globalDefault: false
+description: "This priority class should be used for tier-1 service pods only."
+
+--- 
+
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: low-priority-tier-2
+value: 500
+globalDefault: false
+description: "This priority class should be used for tier-1 service pods only."
+
+# --- 
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: tier-1-app
+#   labels:
+#     app: tier1
+# spec:
+#   replicas: 5
+#   selector:
+#     matchLabels:
+#       app: tier1
+#   template:
+#     metadata:
+#       labels:
+#         app: tier1
+#     spec:
+#       containers:
+#       - name: tier1
+#         image: nginx:perl
+#         ports:
+#         - containerPort: 80
+
+# --- 
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: tier-2-app
+#   labels:
+#     app: tier1
+# spec:
+#   replicas: 5
+#   selector:
+#     matchLabels:
+#       app: tier2
+#   template:
+#     metadata:
+#       labels:
+#         app: tier2
+#     spec:
+#       containers:
+#       - name: tier2
+#         image: nginx:perl
+#         ports:
+        - containerPort: 80
