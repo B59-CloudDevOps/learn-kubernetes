@@ -20,8 +20,8 @@ spec:
         image: nginx:perl
         ports:
         - containerPort: 80
-        tolerations:
-        - key: "batch"
-          operator: "Equal"
-          value: "batch58"
-          effect: "NoSchedule"
+      tolerations:
+      - key: batch
+        operator: Equal
+        value: batch58
+        effect: NoSchedule
