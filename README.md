@@ -426,11 +426,13 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6IjdiNGFkZTZiY2Q5Nzc2MWRmMWUyNjA3MGQxNWEwMWJlZjI5MDEx
 
 > How to taint a node ?
 
-    $ kubectl taint nodes node1 key1=value1:NoSchedule
+    $ kubectl taint nodes ip-172-31-18-142.ec2.internal  batch=batch59:NoSchedule
+
+> How to untaint a node ?
+    $ kubectl taint nodes ip-172-31-18-142.ec2.internal  batch=batch59:NoSchedule-
 
 > What will happen once you taint a node ?
     Since then, no new workloads will be scheduled on the tainted nodes. 
 
 > How can we target our workloads to be tolerant to those taints ?
     You need to add tolerations to our workloads based on the tainted node 
-    

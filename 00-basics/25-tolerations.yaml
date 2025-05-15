@@ -21,7 +21,7 @@ spec:
         ports:
         - containerPort: 80
       tolerations:
-      - key: "batch58"
+      - key: "batch"
         operator: "Equal"
-        value: "value1"
+        value: "batch58"
         effect: "NoSchedule"
