@@ -451,3 +451,5 @@ Pre-emption:
     * When the cluster lacks resources to schedule a high priority Pod, Kubernetes may preempt (evict) lower priority Pods.
     * Preemption evicts lower priority Pods to free up resources.
     * Preemption is automatic, but only happens if needed.
+
+> Tomorrow, we will write yamls files to deploy our EXPENSE APP on kubernetes cluster.
