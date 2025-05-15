@@ -69,4 +69,4 @@ spec:
         image: nginx:perl
         ports:
         - containerPort: 80
-      priorityClassName: high-priority-tier-2
+      priorityClassName: low-priority-tier-2
