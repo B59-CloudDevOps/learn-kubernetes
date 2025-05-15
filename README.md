@@ -407,9 +407,30 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6IjdiNGFkZTZiY2Q5Nzc2MWRmMWUyNjA3MGQxNWEwMWJlZjI5MDEx
             Auto Mode    ( Automatically updates the values )
         Most of the times, we do the tuning of cpu, memory by VPA in manual mode.
 
-Can HPA & VPA work together:
+> Can HPA & VPA work together ?
     Yes, but:
     HPA scales replicas.
     VPA adjusts resource requests.
     Be careful: HPA scales based on resource utilization %, which VPA can affect by changing resource requests.
     Best practice: Use VPA for recommendations only, or tune both with care.
+
+> Taints & Tolerations: 
+
+    When you taint a node, you cannot schedule any pods by default or pods will not be scueduled on the nodes that has taints
+
+> Then what's the user of taints ?  
+
+    If you want specific workloads to be deployed to a specific nodes, then we taint those nodes and workloads that needs to be running on the top of those nodes would be tolerated. 
+
+    Only workloads that has tolerations will be deployed on the tainted nodes by the scheduler.
+
+> How to taint a node ?
+
+    $ kubectl taint nodes node1 key1=value1:NoSchedule
+
+> What will happen once you taint a node ?
+    Since then, no new workloads will be scheduled on the tainted nodes. 
+
+> How can we target our workloads to be tolerant to those taints ?
+    You need to add tolerations to our workloads based on the tainted node 
+    

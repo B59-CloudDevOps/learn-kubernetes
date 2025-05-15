@@ -1,0 +1,27 @@
+# These pods can be deployed in any node in the cluster along with the nodes that has taints
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:perl
+        ports:
+        - containerPort: 80
+    tolerations:
+    - key: "batch58"
+      operator: "Equal"
+      value: "value1"
+      effect: "NoSchedule"
