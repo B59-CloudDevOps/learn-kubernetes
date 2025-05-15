@@ -67,4 +67,4 @@ description: "This priority class should be used for tier-1 service pods only."
 #       - name: tier2
 #         image: nginx:perl
 #         ports:
-        - containerPort: 80
+#         - containerPort: 80
