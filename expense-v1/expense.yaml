@@ -60,7 +60,7 @@ spec:
           value: mysql-svc
         - name: db_user
           value: root
-        - name: db_user
+        - name: db_password
           value: ExpenseApp@1 
         - name: schema_file
           value: /app/schema/backend.sql
