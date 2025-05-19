@@ -97,6 +97,9 @@ spec:
         image: docker.io/sanraman/b59-expense-backend:v002
         ports:
         - containerPort: 8080
+        env: 
+        - name: DB_HOST
+          value: mysql-svc
 
 --- 
 apiVersion: v1
