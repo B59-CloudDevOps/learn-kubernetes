@@ -1,86 +1,4 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: frontend
-  labels:
-    app: frontend
-spec:
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 1
-  replicas: 3
-  selector:
-    matchLabels:
-      app: frontend
-  template:
-    metadata:
-      labels:
-        app: frontend
-    spec:
-      containers:
-      - name: frontend
-        image: docker.io/sanraman/b59-expense-frontend:v001
-        ports:
-        - containerPort: 80
-
---- 
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend-svc
-spec: 
-  type: LoadBalancer
-  selector:
-    app: frontend
-  ports:
-    - protocol: TCP
-      port: 80                  # Port exposed by the service
-      targetPort: 80            # Port exposed by the container: This is the port on which the container is listening
-
---- 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: backend
-  labels:
-    app: backend
-spec:
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 1
-  replicas: 3
-  selector:
-    matchLabels:
-      app: backend
-  template:
-    metadata:
-      labels:
-        app: backend
-    spec:
-      containers:
-      - name: backend
-        image: docker.io/sanraman/b59-expense-backend:v002
-        ports:
-        - containerPort: 8080
-
---- 
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend-svc
-spec: 
-  selector:
-    app: backend
-  ports:
-    - protocol: TCP
-      port: 8080                 
-      targetPort: 8080           
-
---- 
+        
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -121,3 +39,113 @@ spec:
       port: 3306                 
       targetPort: 3306
  
+
+--- 
+
+# Injects schema to mysql 
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: schema-loader
+spec:  
+  template:
+    spec:
+      containers:
+      - name: schema-loader
+        image: docker.io/sanraman/b59-expense-schema-loader:v001
+        env:
+        - name: app_repo
+          value: "https://github.com/expenseapp-001/expense-backend.git"
+        - name: db_host
+          value: mysql-svc
+        - name: db_user
+          value: root
+        - name: db_user
+          value: ExpenseApp@1 
+        - name: schema_file
+          value: /app/schema/backend.sql
+      restartPolicy: Never
+  backoffLimit: 4
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: docker.io/sanraman/b59-expense-backend:v002
+        ports:
+        - containerPort: 8080
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-svc
+spec: 
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 8080                 
+      targetPort: 8080   
+
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: docker.io/sanraman/b59-expense-frontend:v001
+        ports:
+        - containerPort: 80
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-svc
+spec: 
+  type: LoadBalancer
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 80                  # Port exposed by the service
+      targetPort: 80            # Port exposed by the container: This is the port on which the container is listening

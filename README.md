@@ -460,3 +460,9 @@ Pre-emption:
         Frontend Deployment + LB SVC 
         Backend Deployment + Cluster IP
         MySQL Deployment + Cluster IP 
+        Schema Loader ( this should run a job after mysql to perform the shcema injection)
+
+    Let's build a docker image that should inject the schema to the MySQL
+
+    Ensure these values are supplied from the backend 
+    [ db_host db_user db_password schema_file app_repo ]
