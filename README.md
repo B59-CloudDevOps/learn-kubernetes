@@ -452,4 +452,11 @@ Pre-emption:
     * Preemption evicts lower priority Pods to free up resources.
     * Preemption is automatic, but only happens if needed.
 
-> Tomorrow, we will write yamls files to deploy our EXPENSE APP on kubernetes cluster.
+> GOAL:
+    1) Containerize frontend, backend , mysql and schemaInjection to mySQL
+    2) Write manifest files to deploy the images 
+    3) Expense application should be accessible from the internet 
+
+        Frontend Deployment + LB SVC 
+        Backend Deployment + Cluster IP
+        MySQL Deployment + Cluster IP 
