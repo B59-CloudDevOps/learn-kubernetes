@@ -55,7 +55,7 @@ spec:
     spec:
       containers:
       - name: schema-loader
-        image: docker.io/sanraman/b59-expense-schema-loader:v001
+        image: docker.io/sanraman/b59-expense-schema-loader:v002
         env:
         - name: app_repo
           value: "https://github.com/expenseapp-001/expense-backend.git"
