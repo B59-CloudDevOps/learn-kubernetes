@@ -138,7 +138,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: docker.io/sanraman/b59-expense-frontend:v001
+        image: docker.io/sanraman/b59-expense-frontend:v003
         ports:
         - containerPort: 80
 
