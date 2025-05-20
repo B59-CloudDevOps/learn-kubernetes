@@ -541,3 +541,6 @@ What are the areas of improvement ? [ Will see these tomorrow by using HELM ]
    [ ~/learn-kubernetes ] $ helm install mysql  ./helm/ -f ./helm/mysql.yaml
 
 > If the chart already exists and if we just update to upgrade then ?
+
+
+> Helm uses go templating.
