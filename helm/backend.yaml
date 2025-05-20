@@ -1,0 +1,11 @@
+appName: backend
+replicas: 3
+containerPort: 8080
+env:  
+  - name: DB_HOST
+    value: mysql-svc
+  - name: BU
+    value: comm
+serviceType: ClusterIP
+imageVersion: docker.io/sanraman/b59-expense-backend:v002
+schemaInjectionEnabled: false

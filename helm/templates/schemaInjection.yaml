@@ -1,0 +1,17 @@
+{{- if .Values.schemaInjectionEnabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: schema-loader-{{ .Values.appName }}
+spec:  
+  template:
+    spec:
+      containers:
+      - name: schema-loader
+        image: docker.io/sanraman/b59-expense-schema-loader:v003
+        envFrom:
+        - configMapRef:
+            name: {{ .Values.appName }}
+      restartPolicy: Never
+  backoffLimit: 4
+  {{- end }}

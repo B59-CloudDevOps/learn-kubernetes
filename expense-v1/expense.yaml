@@ -1,4 +1,3 @@
-        
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -42,9 +41,7 @@ spec:
       port: 3306                 
       targetPort: 3306
  
-
---- 
-
+---
 # Injects schema to mysql 
 apiVersion: batch/v1
 kind: Job
@@ -69,7 +66,6 @@ spec:
           value: /app/schema/backend.sql
       restartPolicy: Never
   backoffLimit: 4
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -100,7 +96,6 @@ spec:
         env: 
         - name: DB_HOST
           value: mysql-svc
-
 --- 
 apiVersion: v1
 kind: Service
@@ -113,7 +108,6 @@ spec:
     - protocol: TCP
       port: 8080                 
       targetPort: 8080   
-
 --- 
 apiVersion: apps/v1
 kind: Deployment
@@ -141,7 +135,6 @@ spec:
         image: docker.io/sanraman/b59-expense-frontend:v003
         ports:
         - containerPort: 80
-
 --- 
 apiVersion: v1
 kind: Service

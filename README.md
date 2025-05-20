@@ -466,3 +466,75 @@ Pre-emption:
 
     Ensure these values are supplied from the backend 
     [ db_host db_user db_password schema_file app_repo ]
+
+> Now with a single click of a button our app is deployed to EKS. 
+
+What are the areas of improvement ? [ Will see these tomorrow by using HELM ]
+    1) Backend , frontend , mysql deployment files are of common pattern 
+    2) Services are also in to the category of repitivive code
+    3) Whatever we wrote is not based on the environment.   
+        The same code should work for dev, qa ,preprod and prod
+    4) Images are coming from Docker Hub & I want them to be from AWS ECR
+    5) Images are pulled from a public repo, let's ensure the imnages are from private repo. 
+
+    Web App on EC2 : TradeOff  : t3.large with x cpu & y memory : 24*7
+        1) Check what is the size of the instance. 
+        2) Evaluage the cpu & memory utilization not averate, p90. 
+        3) If the utilization is less change the type of instance.
+        4) Add that ec2 to a target Group and enroll it in to autoScaling group.
+        5) Then based on the load, number of instance can scale up or down and can be server by the loadBalancer.
+
+> HELM is a package manager for kubernetes
+    1) Using this, we can parameterize the whole manifest file.
+    2) We can opackage these manifest files to a single package. 
+
+> How a helm chart looks like ?
+
+```
+    mychart/
+        Chart.yaml
+        values.yaml
+        charts/
+        templates/
+            deployment.yaml
+            service.yaml
+            configmap.yaml
+
+```
+
+! The templates/ directory is for template files. When Helm evaluates a chart, it will send all of the files in the templates/ directory through the template rendering engine. It then collects the results of those templates and sends them on to Kubernetes.
+
+!! The values.yaml file is also important to templates. This file contains the default values for a chart. These values may be overridden by users during helm install or helm upgrade.
+
+!!! The Chart.yaml file contains a description of the chart. You can access it from within a template.
+
+!!!! The charts/ directory may contain other charts (which we call subcharts). Later in this guide we will see how those work when it comes to template rendering.
+
+```
+
+    Chart.yaml will have metadata and tells what this chart is
+    Values.yaml if the values file
+    Charts/ dependent or sub charts
+    Templates/ components templates.
+```
+
+> How to install helm ?
+
+```
+    $ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+```
+
+> Let's create a sample helmChart and let's build using that.
+
+```
+    $ helm create demo
+
+```
+
+> How to install a helmChart ?
+
+    $ helm install chartName chartLocation/  
+    In this case, by default values.yaml will be picked
+
+> If the chart already exists and if we just update to upgrade then ?

@@ -1,0 +1,4 @@
+apiVersion: v2
+name: expense-chart
+description: Chart used to deploy expense app 
+version: 1.0.0
