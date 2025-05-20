@@ -2,8 +2,7 @@ appName: frontend
 replicas: 3
 containerPort: 80
 env:
-  - name: BU
-    value: comm
+   BU: comm
 serviceType: LoadBalancer
 imageVersion: docker.io/sanraman/b59-expense-backend:v003
 schemaInjectionEnabled: false

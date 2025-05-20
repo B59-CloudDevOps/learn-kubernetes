@@ -4,14 +4,9 @@ containerPort: 3306
 serviceType: ClusterIP 
 imageVersion: docker.io/mysql:8.0
 env:
-  - name: app_repo
-    value: "https://github.com/expenseapp-001/expense-backend.git"
-  - name: db_host
-    value: mysql-svc
-  - name: db_user
-    value: root
-  - name: db_password
-    value: ExpenseApp@1 
-  - name: schema_file
-    value: /app/schema/backend.sql
+  app_repo: "https://github.com/expenseapp-001/expense-backend.git"
+  db_host: mysql-svc
+  db_user: root
+  db_password: ExpenseApp@1
+  schema_file: /app/schema/backend.sql
 schemaInjectionEnabled: true
