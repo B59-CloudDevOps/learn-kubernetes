@@ -537,4 +537,7 @@ What are the areas of improvement ? [ Will see these tomorrow by using HELM ]
     $ helm install chartName chartLocation/  
     In this case, by default values.yaml will be picked
 
+> How to install with a specific file.yaml ( values )
+   [ ~/learn-kubernetes ] $ helm install mysql  ./helm/ -f ./helm/mysql.yaml
+
 > If the chart already exists and if we just update to upgrade then ?
