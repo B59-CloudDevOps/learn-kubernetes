@@ -9,4 +9,5 @@ env:
   db_user: root
   db_password: ExpenseApp@1
   schema_file: /app/schema/backend.sql
+  MYSQL_ROOT_PASSWORD: ExpenseApp@1
 schemaInjectionEnabled: true
