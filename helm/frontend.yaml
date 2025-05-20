@@ -4,5 +4,5 @@ containerPort: 80
 env:
    BU: comm
 serviceType: LoadBalancer
-imageVersion: docker.io/sanraman/b59-expense-backend:v003
+imageVersion: docker.io/sanraman/b59-expense-frontend:v003
 schemaInjectionEnabled: false
